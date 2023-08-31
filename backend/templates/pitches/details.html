@@ -1,0 +1,211 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block title %}{{ block.super }} - Pitches - {{ pitch.name }}{% endblock %}
+{% block extra_head %}
+  {{ block.super }}
+  <script defer src="{% static 'scripts/modal.js' %}"></script>
+  <script defer src="{% static 'scripts/pitch.js' %}"></script>
+{% endblock %}
+{% block content %}
+  {{ block.super }}
+  <section class="section" style="margin-top: 60px; padding: 20px;">
+    <div class="container">
+      <div class="card">
+        <div class="card-content">
+          <h1 class="title is-3">{{ pitch.name }}</h1>
+          <div class="content">
+            <div class="field">
+              <label class="label">Elevator Pitch</label>
+              <p>{{ pitch.description|safe }}</p>
+            </div>
+            {% if pitch.links.exists %}
+              <div class="field">
+                <label class="label">External Links</label>
+                {% for link in pitch.links.all %}
+                  <a href="{{ link.url }}" target="_blank" class="button is-info">{{ link.name }}</a>
+                {% endfor %}
+              </div>
+            {% endif %}
+            {% if pitch.services.exists %}
+              <div class="field">
+                <label class="label">Required Help</label>
+                {% for service in pitch.services.all %}
+                  <div class="control">
+                    <label class="checkbox">
+                      <input class="checkbox" type="checkbox" checked disabled>
+                      <span>{{ service }}</span>
+                    </label>
+                {% endfor %}
+                {% for service in remaining_services %}
+                  <label class="checkbox">
+                    <input class="checkbox" type="checkbox" disabled>
+                    <span>{{ service }}</span>
+                  </label>
+                {% endfor %}
+              </div>
+              </div>
+            {% endif %}
+            <br>
+            {% if pitch.platforms.exists %}
+              <div class="field">
+                <label class="label">Platforms</label>
+                <div class="control">
+                  {% for platform in pitch.platforms.all %}
+                    <label class="checkbox">
+                      <input class="checkbox" type="checkbox" checked disabled>
+                      <span>{{ platform }}</span>
+                    </label>
+                  {% endfor %}
+                  {% for platform in remaining_platforms %}
+                    <label class="checkbox">
+                      <input class="checkbox" type="checkbox" disabled>
+                      <span>{{ platform }}</span>
+                    </label>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+            {% if user.publisher_id %}
+              <div class="card">
+                <header class="card-header">
+                  <p class="card-header-title">Author Contacts</p>
+                </header>
+                <div class="card-content">
+                  <div class="content">
+                    <p>{{ pitch.created_by.get_full_name }}</p>
+                    <p>Email: {{ pitch.created_by.email }}</p>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+            <br>
+            {% if resolutions %}
+              <div class="card">
+                <header class="card-header">
+                  <p class="card-header-title">Reviews</p>
+                </header>
+                <div class="card-content">
+                  <div class="content">
+                    {% for resolution in resolutions %}
+                      <h3>{{ resolution.type }}</h3>
+                      <p>{{ resolution.description|safe }}</p>
+                      <p><a href="{{ resolution.publisher.get_absolute_url }}" target="_blank">{{ resolution.publisher.name }}</a></p>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+              <br>
+            {% endif %}
+            {% if user.is_authenticated and not pitch.is_abused and not pitch.is_resolved %}
+              {% if user.publisher_id and pitch.is_published %}
+                <button class="js-modal-trigger button is-success" data-target="addPitchResolution">Submit Review</button>
+                <button class="js-modal-trigger button is-danger" data-target="reportAbuse">Report Abuse</button>
+              {% endif %}
+              {% if not user.publisher_id and not pitch.is_published %}
+                <button class="js-modal-trigger button is-success" data-target="publishPitch">Publish</button>
+                <a class="button is-danger" href="{% url 'backend:pitch_update' pitch.slug %}">Edit</a>
+              {% endif %}
+              {% if lfp_enabled and user.pk != pitch.created_by_id and pitch.is_published %}
+                <form method="post" id="pitchLike" action="{% url 'backend:pitch_like' %}">
+                  {% csrf_token %}
+                  <input class="input" type="hidden" name="slug" value="{{ pitch.slug }}">
+                  <button class="button" type="submit">
+                    <span class="icon">
+                      <i class="fa {% if is_pitch_liked %}fa-heart{% else %}fa-heart-o{% endif %}"></i>
+                    </span>
+                  </button>
+                </form>
+              {% endif %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% if user.is_authenticated and not pitch.is_resolved and not pitch.is_abused %}
+    {% if user.publisher_id and pitch.is_published %}
+      <div class="modal" id="reportAbuse">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">Report abuse</p>
+            <button class="delete" aria-label="close"></button>
+          </header>
+          <form method="post" action="{% url 'backend:pitch_abuse' %}">
+            {% csrf_token %}
+            <section class="modal-card-body">
+              <textarea
+                id="description"
+                name="description"
+                class="textarea is-danger"
+                placeholder="'{{ pitch.name }}' is violating platform rules by..."
+              ></textarea>
+              <input class="input" type="hidden" name="slug" value="{{ pitch.slug }}" />
+            </section>
+            <footer class="modal-card-foot">
+              <button class="button is-success" type="submit">Confirm</button>
+              <button class="button" type="button">Cancel</button>
+            </footer>
+          </form>
+        </div>
+      </div>
+      <div class="modal" id="addPitchResolution">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">Add pitch resolution</p>
+            <button class="delete" aria-label="close"></button>
+          </header>
+          <form method="post" action="{% url 'backend:pitch_review' %}">
+            {% csrf_token %}
+            <section class="modal-card-body">
+              <textarea
+                name="description"
+                class="textarea"
+                placeholder="'{{ pitch.name }}' review resolution"
+              ></textarea>
+              <input class="input" type="hidden" name="slug" value="{{ pitch.slug }}" />
+            </section>
+            <footer class="modal-card-foot">
+              <div class="select is-primary mr-3">
+                <select name="resolution_type">
+                  <option value="Approve">Approve</option>
+                  <option value="Reject">Reject</option>
+                  <option value="Request Changes">Request Changes</option>
+                </select>
+              </div>
+              <div class="buttons is-right">
+                <button class="button is-success" type="submit">Confirm</button>
+                <button class="button" type="button">Cancel</button>
+              </div>
+            </footer>
+          </form>
+        </div>
+      </div>
+    {% endif %}
+    {% if not user.publisher_id and not pitch.is_published %}
+      <div class="modal" id="publishPitch">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">Publish pitch</p>
+            <button class="delete" aria-label="close"></button>
+          </header>
+          <section class="modal-card-body has-text-centered">
+            <p>This will attract the attention of the selected publisher,</p>
+            <p>so ensure everything looks as expected!</p>
+          </section>
+          <footer class="modal-card-foot">
+            <form method="post" action="{% url 'backend:pitch_publish' %}">
+              {% csrf_token %}
+              <input class="input" type="hidden" name="slug" value="{{ pitch.slug }}" />
+              <button class="button is-success" type="submit">Confirm</button>
+            </form>
+            <button class="button">Cancel</button>
+          </footer>
+        </div>
+      </div>
+    {% endif %}
+  {% endif %}
+{% endblock %}

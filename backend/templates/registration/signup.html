@@ -1,0 +1,96 @@
+{% extends '../base.html' %}
+
+{% load static %}
+
+{% block extra_head %}
+  {{ block.super }}
+  <script defer src="{% static 'scripts/signup.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+  {{ block.super }}
+  <section class="section">
+    <div class="container" style="margin-top: 60px; padding: 20px;">
+      <div class="columns is-multiline is-centered">
+        <div class="column is-8 is-5-desktop">
+          <div class="box p-6 has-background-light has-text-centered">
+            <span class="has-text-grey-dark">Sign Up</span>
+            <h3 class="mb-5 is-size-4 has-text-weight-bold">Create new account</h3>
+            {{ form.non_field_errors }}
+            <form method="post">
+              {% csrf_token %}
+              <div class="columns is-multiline">
+                <div class="column is-6">
+                  {{ form.first_name.errors }}
+                  <div class="control">
+                    <input class="input"
+                           type="text"
+                           name="first_name"
+                           placeholder="First Name"
+                           {% if form.first_name.value %}value="{{ form.first_name.value }}"{% endif %} />
+                  </div>
+                </div>
+                <div class="column is-6">
+                  {{ form.last_name.errors }}
+                  <div class="control">
+                    <input class="input"
+                           type="text"
+                           name="last_name"
+                           placeholder="Last Name"
+                           {% if form.last_name.value %}value="{{ form.last_name.value }}"{% endif %} />
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                {{ form.email.errors }}
+                <div class="control">
+                  <input class="input"
+                         type="username"
+                         name="email"
+                         placeholder="E-mail address"
+                         {% if form.email.value %}value="{{ form.email.value }}"{% endif %} />
+                </div>
+              </div>
+              <div class="field">
+                {{ form.password1.errors }}
+                <div class="control">
+                  <input class="input" type="password" name="password1" placeholder="Password" />
+                </div>
+              </div>
+              <div class="field">
+                {{ form.password2.errors }}
+                <div class="control">
+                  <input class="input"
+                         type="password"
+                         name="password2"
+                         placeholder="Password confirmation" />
+                </div>
+              </div>
+              <label class="checkbox mb-5">
+                {{ form.terms_agreed.errors }}
+                <input class="checkbox mr-2" type="checkbox" name="terms_agreed" id="termsAgreed"/>
+                <small class="has-text-grey-dark">By signing up, you agree to our
+                  <a href="{% url 'django.contrib.flatpages.views.flatpage' url='policies/terms-and-data' %}"
+                     target="_blank">Terms, Data Policy</a> and
+                  <a href="{% url 'django.contrib.flatpages.views.flatpage' url='policies/cookies' %}"
+                     target="_blank">Cookies Policy</a>.</small>
+              </label>
+              {{ form.captcha }}
+              {{ form.captcha.errors }}
+              {% if next %}
+                <input type="hidden" name="{{next_key}}" value="{{next}}" />
+              {% endif %}
+              <button type="submit" class="button is-primary mb-3 is-fullwidth" id="signupButton" disabled>Sign Up</button>
+            </form>
+            <p class="has-text-grey-dark">
+              <small>
+                <span>Already have an account?</span>
+                <a href="{% url 'login' %}{% if next %}?{{next_key}}={{next}}{% endif %}">Sign In</a>
+              </small>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

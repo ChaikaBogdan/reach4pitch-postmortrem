@@ -1,0 +1,61 @@
+{% extends '../base.html' %}
+{% block title %}{{ block.super }} - Publishers - {{ publisher.name }}{% endblock %}
+{% block content %}
+  {{ block.super }}
+  <section class="section">
+    <div class="container" style="margin-top: 60px; padding: 20px;">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="card">
+            <div class="card-content">
+              <div class="columns">
+                <div class="column is-one-third">
+                  {% if publisher.logo %}
+                    <figure class="image is-256x256">
+                      <img src="{{ publisher.logo }}" alt="{{ publisher.name }} logo" />
+                    </figure>
+                  {% endif %}
+                  <div class="field is-grouped" style="margin-top: 10px;">
+                    {% if not user.publisher_id %}
+                      <div class="control">
+                        <a class="button is-primary is-small"
+                           href="{% url 'backend:pitch_publisher_create' publisher.slug %}">Submit Pitch</a>
+                      </div>
+                    {% endif %}
+                    <div class="control">
+                      <a class="button is-info is-small"
+                         href="{{ publisher.links.first.url }}"
+                         target="_blank">Official Website</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="column">
+                  {% if publisher.description %}<p style="margin-top: 10px;">{{ publisher.description| safe }}</p>{% endif %}
+                </div>
+              </div>
+              <hr />
+              <div class="columns">
+                <div class="column">
+                  {% if publisher.platforms.exists %}
+                    <h3 class="title is-4">Supported Platforms</h3>
+                    <ul>
+                      {% for platform in publisher.platforms.all %}<li style="font-size: smaller;">&bull; {{ platform }}</li>{% endfor %}
+                    </ul>
+                  {% endif %}
+                </div>
+                <div class="column">
+                  {% if publisher.services.exists %}
+                    <h3 class="title is-4">Supported Services</h3>
+                    <ul>
+                      {% for service in publisher.services.all %}<li style="font-size: smaller;">&bull; {{ service }}</li>{% endfor %}
+                    </ul>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

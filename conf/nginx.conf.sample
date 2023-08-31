@@ -1,0 +1,60 @@
+upstream app_server {
+    server unix:/run/gunicorn.sock fail_timeout=0;
+}
+server {
+    listen 80;
+    listen [::]:80;
+    server_name monitor.reach4pitch.com;
+    location / {
+         proxy_set_header X-Forwarded-Proto $scheme;
+         proxy_set_header Host              $host;
+         proxy_set_header X-Real-IP         $remote_addr;
+         proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
+         proxy_redirect off;
+         proxy_pass http://162.0.230.182:19999/;
+    }
+}
+server {
+    listen 80;
+    listen [::]:80;
+    server_name reach4pitch.com www.reach4pitch.com;
+    return 301 https://$host$request_uri;
+}
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    ssl on;
+    ssl_certificate /etc/ssl/reach4pitch_com_bundle.crt;
+    ssl_certificate_key /etc/ssl/reach4pitch_com.key;
+    server_name reach4pitch.com www.reach4pitch.com;
+    location /backend/static/ {
+        autoindex on;
+        alias /var/www/reach4pitch/static/;
+        access_log off;
+        expires 30d;
+        add_header Cache-Control public;
+        tcp_nodelay off;
+    }
+    location /backend/media/ {
+        autoindex on;
+        alias /var/www/reach4pitch/media/;
+        access_log off;
+        expires 30d;
+        add_header Cache-Control public;
+        tcp_nodelay off;
+    }
+    location /favicon.ico {
+         alias /var/www/reach4pitch/static/favicon.ico;
+    }
+    location / {
+        try_files $uri @proxy_to_app;
+    }
+    location @proxy_to_app {
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header Host              $host;
+        proxy_set_header X-Real-IP         $remote_addr;
+        proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
+        proxy_redirect off;
+        proxy_pass http://app_server;
+    }
+}

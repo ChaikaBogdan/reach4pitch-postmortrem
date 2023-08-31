@@ -1,0 +1,291 @@
+[
+{
+    "model": "backend.externallink",
+    "pk": 3,
+    "fields": {
+        "icon": "https://avatars.cloudflare.steamstatic.com/df7ebc34c879df80186a3d27cf438bf3c10e4b3f_full.jpg",
+        "name": "Official website",
+        "url": "https://7coreloops.net/",
+        "content_type": 5,
+        "object_id": 1
+    }
+},
+{
+    "model": "backend.externallink",
+    "pk": 4,
+    "fields": {
+        "icon": "https://7coreloops.net/assets/discord.png",
+        "name": "Discord",
+        "url": "https://discord.com/invite/XXjEEuERMV",
+        "content_type": 5,
+        "object_id": 1
+    }
+},
+{
+    "model": "backend.platform",
+    "pk": 1,
+    "fields": {
+        "name": "PC",
+        "icon": "https://cdn-icons-png.flaticon.com/512/4703/4703487.png"
+    }
+},
+{
+    "model": "backend.platform",
+    "pk": 2,
+    "fields": {
+        "name": "Mobile",
+        "icon": "https://cdn-icons-png.flaticon.com/512/545/545245.png"
+    }
+},
+{
+    "model": "backend.platform",
+    "pk": 3,
+    "fields": {
+        "name": "Console",
+        "icon": "https://cdn-icons-png.flaticon.com/512/3197/3197658.png"
+    }
+},
+{
+    "model": "backend.service",
+    "pk": 1,
+    "fields": {
+        "name": "Marketing"
+    }
+},
+{
+    "model": "backend.service",
+    "pk": 2,
+    "fields": {
+        "name": "Funding"
+    }
+},
+{
+    "model": "backend.service",
+    "pk": 3,
+    "fields": {
+        "name": "Distribution"
+    }
+},
+{
+    "model": "backend.service",
+    "pk": 4,
+    "fields": {
+        "name": "Development"
+    }
+},
+{
+    "model": "backend.service",
+    "pk": 5,
+    "fields": {
+        "name": "QA"
+    }
+},
+{
+    "model": "backend.service",
+    "pk": 6,
+    "fields": {
+        "name": "Localization"
+    }
+},
+{
+    "model": "backend.publisher",
+    "pk": 1,
+    "fields": {
+        "name": "7CoreLoops",
+        "slug": "7coreloops",
+        "tagline": "The quick red fox jumps over the lazy wolf in space and time",
+        "description": "<p>7CoreLoops is a dynamic indie publisher comprised of a talented and multicultural team, headquartered in Tallinn, Estonia. Specializing in PC games and prototypes, their passion for game development shines through in their work. Among their notable creations is the captivating Visual novel called Everglow.</p>",
+        "logo": "https://avatars.cloudflare.steamstatic.com/df7ebc34c879df80186a3d27cf438bf3c10e4b3f_full.jpg",
+        "created_at": "2023-06-02T16:05:17Z",
+        "email": null,
+        "platforms": [
+            1
+        ]
+    }
+},
+{
+    "model": "backend.pricingplan",
+    "pk": 1,
+    "fields": {
+        "name": "Indie",
+        "price": "0.00",
+        "enabled": true,
+        "max_pitches": 1,
+        "max_reviews": 1,
+        "max_lfp": 0,
+        "max_lft": 0,
+        "max_team": 1,
+        "premium_support": false
+    }
+},
+{
+    "model": "backend.pricingplan",
+    "pk": 2,
+    "fields": {
+        "name": "Team",
+        "price": "3.00",
+        "enabled": false,
+        "max_pitches": 3,
+        "max_reviews": 3,
+        "max_lfp": 1,
+        "max_lft": 1,
+        "max_team": 5,
+        "premium_support": false
+    }
+},
+{
+    "model": "backend.pricingplan",
+    "pk": 3,
+    "fields": {
+        "name": "Studio",
+        "price": "10.00",
+        "enabled": false,
+        "max_pitches": 999,
+        "max_reviews": 999,
+        "max_lfp": 999,
+        "max_lft": 999,
+        "max_team": 999,
+        "premium_support": true
+    }
+},
+{
+    "model": "backend.publisherservice",
+    "pk": 1,
+    "fields": {
+        "service": 4,
+        "publisher": 1,
+        "description": ""
+    }
+},
+{
+    "model": "backend.publisherservice",
+    "pk": 2,
+    "fields": {
+        "service": 5,
+        "publisher": 1,
+        "description": ""
+    }
+},
+{
+    "model": "backend.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$8FJIE9YFzPcd5gFTkivPag$TUPbt8aGgwOxng5BaqRKcyD0JxDxPAoPS+71SBo6IHY=",
+        "last_login": "2023-07-02T09:45:41.540Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2023-04-10T20:16:30Z",
+        "email": "admin@reach4pitch.com",
+        "pricing_plan": null,
+        "publisher": 1,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "backend.user",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$7xNKVithdn0WxtHOJM52gc$bvmSEhJUpnlKw+9wSPZdG5X/Un678VpjCajU8Ph4NOM=",
+        "last_login": "2023-06-10T19:48:55.187Z",
+        "is_superuser": false,
+        "username": "pitcher",
+        "first_name": "Pitcher",
+        "last_name": "Doe",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2023-03-26T13:31:18Z",
+        "email": "pitcher@reach4pitch.com",
+        "pricing_plan": 1,
+        "publisher": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "backend.resolutiontype",
+    "pk": 1,
+    "fields": {
+        "name": "Approved",
+        "publisher": 1
+    }
+},
+{
+    "model": "backend.resolutiontype",
+    "pk": 2,
+    "fields": {
+        "name": "Declined",
+        "publisher": 1
+    }
+},
+{
+    "model": "backend.resolutiontype",
+    "pk": 3,
+    "fields": {
+        "name": "Changes requested",
+        "publisher": 1
+    }
+},
+{
+    "model": "flatpages.flatpage",
+    "pk": 1,
+    "fields": {
+        "url": "/policies/cookies/",
+        "title": "Cookies policy",
+        "content": "<section class=\"section\">\r\n  <div class=\"container\" style=\"margin-top: 60px; padding: 20px;\">\r\n    <div class=\"columns\">\r\n      <div class=\"column is-8-desktop\">\r\n        <h4 class=\"mb-2 is-size-5 has-text-weight-bold\">Cookies Policy</h4>\r\n        <p class=\"mb-4 has-text-grey-dark\">\r\n          We use cookies to personalize content, provide social media features, and analyze traffic to our website. We also share information about your use of our site with our social media, advertising, and analytics partners.\r\n        </p>\r\n        <p class=\"mb-4 has-text-grey-dark\">\r\n          By continuing to use our website, you agree to our use of cookies. These cookies help us tailor your browsing experience, show you relevant content, and understand how our website is being used.\r\n        </p>\r\n        <p class=\"mb-4 has-text-grey-dark\">\r\n          If you prefer not to have cookies stored on your device, you can adjust your cookie settings by clicking on 'Cookie Settings' or equivalent options in your browser. However, please note that disabling certain cookies may impact the functionality and performance of our website.\r\n        </p>\r\n        <p class=\"has-text-grey-dark\">\r\n          For more information about how we handle your personal data and protect your privacy,<br> please review our <a href=\"/pages/policies/terms-and-data/\">Term's and Data policy</a>.\r\n        </p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>",
+        "enable_comments": false,
+        "template_name": "",
+        "registration_required": false,
+        "sites": [
+            1
+        ]
+    }
+},
+{
+    "model": "flatpages.flatpage",
+    "pk": 2,
+    "fields": {
+        "url": "/policies/terms-and-data/",
+        "title": "Terms and data policy",
+        "content": "<section class=\"section\">\r\n  <div class=\"container\" style=\"margin-top: 60px; padding: 20px;\">\r\n    <div class=\"columns\">\r\n      <div class=\"column is-8-desktop\">\r\n        <h4 class=\"mb-2 is-size-5 has-text-weight-bold\">Terms and Data Policy</h4>\r\n        <p class=\"mb-4 has-text-grey-dark\">Before using our platform, please take the time to read and understand the following terms and data policy. By using our platform, you acknowledge that you have read, understood, and agreed to abide by these terms and data policy. If you do not agree with any of the mentioned terms, we kindly request that you refrain from using our services.</p>\r\n\r\n        <p><strong>1. Content Responsibility:</strong> We do not assume responsibility for the content of pitches submitted on our platform. However, if you encounter any abusive behavior or violations of our platform's policies, we encourage you to report them to us for investigation.</p>\r\n\r\n        <p><strong>2. File Responsibility:</strong> We do not take responsibility for the files accessed through external links provided on our platform. It is your responsibility to exercise caution and ensure the safety and security of your device when accessing such files.</p>\r\n\r\n        <p><strong>3. Response Time:</strong> We do not guarantee the speed of response from publishers on our platform. The response time may vary depending on various factors, and we cannot be held liable for any delays.</p>\r\n\r\n        <p><strong>4. Positive Response:</strong> We do not guarantee a positive response from publishers for your pitches. The decision to accept or reject a pitch rests solely with the publishers, and we cannot influence their decisions.</p>\r\n\r\n        <p><strong>5. External Communication:</strong> We do not assume responsibility for any communication or transactions that occur outside our platform. We encourage users to conduct all discussions and transactions related to pitches within our secure platform to ensure transparency and accountability.</p>\r\n\r\n        <p><strong>6. Accuracy of Data:</strong> We do not guarantee the accuracy or reliability of the information presented by publishers or developers on our platform. It is your responsibility to verify the accuracy of any data provided before making any decisions or commitments.</p>\r\n\r\n        <p><strong>7. Financial Impact:</strong> We do not assume responsibility for any financial loss or profit incurred by either party, including developers or publishers, as a result of using our platform or engaging in pitch-related activities. Any financial transactions or agreements made are solely the responsibility of the involved parties.</p>\r\n\r\n        <p><strong>8. Data Usage and Cookies:</strong> We may collect and process personal data as described in our Privacy Policy. By using our platform, you consent to the collection, processing, and storage of your personal data in accordance with our Privacy Policy. We may also use cookies to enhance your user experience and provide personalized features. You have the option to disable cookies in your browser settings, although this may affect certain functionalities of our platform.</p>\r\n\r\n        <p><strong>9. User Account and Data Removal:</strong> We reserve the right to delete user accounts and remove pitches from our platform upon request or in cases of policy violations or abusive behavior. Please contact us if you have any concerns or require assistance with user account or pitch removal.</p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>",
+        "enable_comments": false,
+        "template_name": "",
+        "registration_required": false,
+        "sites": [
+            1
+        ]
+    }
+},
+{
+    "model": "sites.site",
+    "pk": 1,
+    "fields": {
+        "domain": "127.0.0.1:8000",
+        "name": "reach4pitch.com"
+    }
+},
+{
+    "model": "flags.flagstate",
+    "pk": 1,
+    "fields": {
+        "name": "LFP_ENABLED",
+        "condition": "boolean",
+        "value": "False",
+        "required": false
+    }
+},
+{
+    "model": "flags.flagstate",
+    "pk": 2,
+    "fields": {
+        "name": "SIGNUP_ENABLED",
+        "condition": "boolean",
+        "value": "False",
+        "required": false
+    }
+}
+]

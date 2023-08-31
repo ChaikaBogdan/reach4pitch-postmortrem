@@ -1,0 +1,14 @@
+[Unit]
+Description=rq daemon
+Requires=redis.service
+After=network.target redis.service
+
+[Service]
+Type=simple
+User=root
+EnvironmentFile=/home/reach4pitch/.env
+WorkingDirectory=/home/reach4pitch/reach4pitch
+ExecStart=/root/.local/bin/poetry run python manage.py rqworker default
+
+[Install]
+WantedBy=multi-user.target

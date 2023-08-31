@@ -1,0 +1,946 @@
+[
+{
+    "model": "backend.externallink",
+    "pk": 1,
+    "fields": {
+        "icon": "https://herocraft.com/static/img/logo.svg",
+        "name": "Official website",
+        "url": "https://herocraft.com/",
+        "content_type": 5,
+        "object_id": 5
+    }
+},
+{
+    "model": "backend.externallink",
+    "pk": 2,
+    "fields": {
+        "icon": "https://yt3.googleusercontent.com/ytc/AGIKgqMmZRXqKcBDNJnfz8E1dr8hAtuSUA8AFKufPdBg=s176-c-k-c0x00ffffff-no-rj",
+        "name": "Official website",
+        "url": "https://www.mergegames.com/",
+        "content_type": 5,
+        "object_id": 4
+    }
+},
+{
+    "model": "backend.externallink",
+    "pk": 3,
+    "fields": {
+        "icon": "https://avatars.cloudflare.steamstatic.com/df7ebc34c879df80186a3d27cf438bf3c10e4b3f_full.jpg",
+        "name": "Official website",
+        "url": "https://7coreloops.net/",
+        "content_type": 5,
+        "object_id": 1
+    }
+},
+{
+    "model": "backend.externallink",
+    "pk": 4,
+    "fields": {
+        "icon": "https://7coreloops.net/assets/discord.png",
+        "name": "Discord",
+        "url": "https://discord.com/invite/XXjEEuERMV",
+        "content_type": 5,
+        "object_id": 1
+    }
+},
+{
+    "model": "backend.externallink",
+    "pk": 5,
+    "fields": {
+        "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Daedalic_Entertainment_eng.svg/799px-Daedalic_Entertainment_eng.svg.png",
+        "name": "Official website",
+        "url": "https://www.daedalic.com/",
+        "content_type": 5,
+        "object_id": 3
+    }
+},
+{
+    "model": "backend.externallink",
+    "pk": 6,
+    "fields": {
+        "icon": "https://bloody-disgusting.com/wp-content/uploads/2019/07/halflife3.jpg",
+        "name": "Random link",
+        "url": "https://bloody-disgusting.com/wp-content/uploads/2019/07/halflife3.jpg",
+        "content_type": 2,
+        "object_id": 3
+    }
+},
+{
+    "model": "backend.externallink",
+    "pk": 7,
+    "fields": {
+        "icon": "https://7coreloops.net/assets/lost_days/clarissa.png",
+        "name": "Announcement",
+        "url": "https://7coreloops.net/feed/2022/12/20/lost-days-sneak-peak.html",
+        "content_type": 2,
+        "object_id": 2
+    }
+},
+{
+    "model": "backend.externallink",
+    "pk": 8,
+    "fields": {
+        "icon": "https://img.itch.zone/aW1nLzk2Mjk5NzcuanBn/180x143%23c/B9cn%2Fw.jpg",
+        "name": "Official website",
+        "url": "https://7coreloops.net/everglow",
+        "content_type": 2,
+        "object_id": 1
+    }
+},
+{
+    "model": "backend.externallink",
+    "pk": 9,
+    "fields": {
+        "icon": "https://herocraft.com/static/img/logo.svg",
+        "name": "Official website",
+        "url": "https://herocraft.com/static/img/logo.svg",
+        "content_type": 2,
+        "object_id": 11
+    }
+},
+{
+    "model": "backend.externallink",
+    "pk": 10,
+    "fields": {
+        "icon": "https://pbs.twimg.com/profile_images/1626544774927855617/Fd_0tboY_400x400.jpg",
+        "name": "Official website",
+        "url": "https://www.mergegames.com/",
+        "content_type": 2,
+        "object_id": 8
+    }
+},
+{
+    "model": "backend.externallink",
+    "pk": 11,
+    "fields": {
+        "icon": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Daedalic_Entertainment_eng.svg/799px-Daedalic_Entertainment_eng.svg.png",
+        "name": "Daedalic 1 link",
+        "url": "https://www.daedalic.com/assets/img/lgo_daedalic_home.png",
+        "content_type": 2,
+        "object_id": 5
+    }
+},
+{
+    "model": "backend.pitch",
+    "pk": 1,
+    "fields": {
+        "name": "Everglow",
+        "slug": "a374fdfd-0f34-4805-accc-9a3589f16870",
+        "tagline": "How deep is the fox hole?",
+        "cover": "https://cdn.cloudflare.steamstatic.com/steam/apps/1763150/header.jpg?t=1668885333",
+        "description": "Experience story of Glow, young and naive furry heroine caught between two empire's interplanetary ambitions forged in tragedy and conspiracy. \r\n- Unravel or become part of a government conspiracy.\r\n- Find all 5 unique endings.\r\n- Be the fox you've always wanted to be.",
+        "created_at": "2023-03-26T13:31:18Z",
+        "created_by": 3,
+        "is_public": false,
+        "is_published": true,
+        "is_abused": false,
+        "is_resolved": false,
+        "platforms": [
+            1
+        ],
+        "services": [
+            1,
+            3,
+            5
+        ]
+    }
+},
+{
+    "model": "backend.pitch",
+    "pk": 2,
+    "fields": {
+        "name": "Everglow: The Lost Days",
+        "slug": "d8dbc113-3c11-46e9-ace4-1ac821ce6149",
+        "tagline": "The deep dive into unknown",
+        "cover": "https://7coreloops.net/assets/lost_days/clarissa.png",
+        "description": "- This will be a new standalone game (not DLC).\r\n- Game will be much longer than Everglow.\r\n- This is not a sequel or a prequel. The story will be about the time interval between Glow’s arrival on the wolf planet and her departure on the Arbiter of Fate (10 years of lost days, huh)\r\n- You will get answers to the questions and plot holes of the original game (as much as possible). This will also be clear to new players (who haven’t played original Everglow)\r\n- You will find yourself on the other side of the barricades and meet old friends.\r\n- There will be ONE true ending and many chances to screw up everything. (Backbone sends his regards)\r\n- You won’t be playing as Glow. This is the story of newly minted wolf inspector Clarissa Squalus who is trying to solve a mysterious case #591286729879 (why the hell it's so long?!)",
+        "created_at": "2023-03-26T13:31:18Z",
+        "created_by": 3,
+        "is_public": false,
+        "is_published": true,
+        "is_abused": false,
+        "is_resolved": false,
+        "platforms": [
+            1
+        ],
+        "services": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+        ]
+    }
+},
+{
+    "model": "backend.pitch",
+    "pk": 3,
+    "fields": {
+        "name": "Half-Dive 3",
+        "slug": "4b40f7c0-e3ea-484c-bbfc-00d6ba7f75ca",
+        "tagline": "We really want it",
+        "cover": "https://bloody-disgusting.com/wp-content/uploads/2019/07/halflife3.jpg",
+        "description": "But it will never happen",
+        "created_at": "2023-03-26T13:46:07Z",
+        "created_by": 3,
+        "is_public": false,
+        "is_published": true,
+        "is_abused": false,
+        "is_resolved": false,
+        "platforms": [
+            1
+        ],
+        "services": [
+            4
+        ]
+    }
+},
+{
+    "model": "backend.pitch",
+    "pk": 5,
+    "fields": {
+        "name": "Daedalic 1",
+        "slug": "c0d05874-6da3-4e41-b556-37a3b171d172",
+        "tagline": "Daedalic 1 tagline",
+        "cover": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Daedalic_Entertainment_eng.svg/799px-Daedalic_Entertainment_eng.svg.png",
+        "description": "Daedalic 1 description",
+        "created_at": "2023-03-26T13:50:44Z",
+        "created_by": 3,
+        "is_public": false,
+        "is_published": false,
+        "is_abused": false,
+        "is_resolved": false,
+        "platforms": [
+            1
+        ],
+        "services": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "backend.pitch",
+    "pk": 6,
+    "fields": {
+        "name": "Daedalic 2",
+        "slug": "ea5647ac-38c5-4d44-aca0-f7222b6ad39d",
+        "tagline": "",
+        "cover": null,
+        "description": "Test",
+        "created_at": "2023-03-26T13:51:33Z",
+        "created_by": 4,
+        "is_public": false,
+        "is_published": false,
+        "is_abused": false,
+        "is_resolved": false,
+        "platforms": [
+            2
+        ],
+        "services": [
+            2
+        ]
+    }
+},
+{
+    "model": "backend.pitch",
+    "pk": 8,
+    "fields": {
+        "name": "Merge 1",
+        "slug": "e46d8517-9622-49d1-b64d-0f7932ff2ecf",
+        "tagline": "Merge 1 tagline",
+        "cover": "https://www.gematsu.com/wp-content/uploads/2021/10/Company-Logo_Merge-Games-320x122.png",
+        "description": "<p>Merge 1 description</p>",
+        "created_at": "2023-03-26T13:52:47Z",
+        "created_by": 3,
+        "is_public": false,
+        "is_published": false,
+        "is_abused": false,
+        "is_resolved": false,
+        "platforms": [
+            1
+        ],
+        "services": [
+            4,
+            5,
+            6
+        ]
+    }
+},
+{
+    "model": "backend.pitch",
+    "pk": 9,
+    "fields": {
+        "name": "Merge 2",
+        "slug": "1bf84786-209c-414d-83de-cc9aaf004521",
+        "tagline": "",
+        "cover": null,
+        "description": "Test",
+        "created_at": "2023-03-26T13:52:58Z",
+        "created_by": 6,
+        "is_public": false,
+        "is_published": false,
+        "is_abused": false,
+        "is_resolved": false,
+        "platforms": [
+            2
+        ],
+        "services": [
+            6
+        ]
+    }
+},
+{
+    "model": "backend.pitch",
+    "pk": 11,
+    "fields": {
+        "name": "Hero 1",
+        "slug": "22eaeac2-1b9c-4a0a-9d46-2bc78167ba19",
+        "tagline": "Hero 1 tagline",
+        "cover": "https://herocraft.com/static/img/logo.svg",
+        "description": "Hero 1 description",
+        "created_at": "2023-03-26T13:53:38Z",
+        "created_by": 3,
+        "is_public": false,
+        "is_published": false,
+        "is_abused": false,
+        "is_resolved": false,
+        "platforms": [
+            1,
+            2,
+            3
+        ],
+        "services": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "backend.pitch",
+    "pk": 12,
+    "fields": {
+        "name": "Hero 2",
+        "slug": "a33c6718-ce51-40dd-97ac-fff5cd23a575",
+        "tagline": "",
+        "cover": null,
+        "description": "Test",
+        "created_at": "2023-03-26T13:53:47Z",
+        "created_by": 5,
+        "is_public": false,
+        "is_published": false,
+        "is_abused": false,
+        "is_resolved": false,
+        "platforms": [
+            3
+        ],
+        "services": [
+            3
+        ]
+    }
+},
+{
+    "model": "backend.platform",
+    "pk": 1,
+    "fields": {
+        "name": "PC",
+        "icon": "https://cdn-icons-png.flaticon.com/512/4703/4703487.png"
+    }
+},
+{
+    "model": "backend.platform",
+    "pk": 2,
+    "fields": {
+        "name": "Mobile",
+        "icon": "https://cdn-icons-png.flaticon.com/512/545/545245.png"
+    }
+},
+{
+    "model": "backend.platform",
+    "pk": 3,
+    "fields": {
+        "name": "Console",
+        "icon": "https://cdn-icons-png.flaticon.com/512/3197/3197658.png"
+    }
+},
+{
+    "model": "backend.service",
+    "pk": 1,
+    "fields": {
+        "name": "Marketing"
+    }
+},
+{
+    "model": "backend.service",
+    "pk": 2,
+    "fields": {
+        "name": "Funding"
+    }
+},
+{
+    "model": "backend.service",
+    "pk": 3,
+    "fields": {
+        "name": "Distribution"
+    }
+},
+{
+    "model": "backend.service",
+    "pk": 4,
+    "fields": {
+        "name": "Development"
+    }
+},
+{
+    "model": "backend.service",
+    "pk": 5,
+    "fields": {
+        "name": "QA"
+    }
+},
+{
+    "model": "backend.service",
+    "pk": 6,
+    "fields": {
+        "name": "Localization"
+    }
+},
+{
+    "model": "backend.publisher",
+    "pk": 1,
+    "fields": {
+        "name": "7CoreLoops",
+        "slug": "7coreloops",
+        "tagline": "The quick red fox jumps over the lazy wolf in space and time",
+        "description": "7CoreLoops is a dynamic indie publisher comprised of a talented and multicultural team, headquartered in Tallinn, Estonia. Specializing in PC games and prototypes, their passion for game development shines through in their work. Among their notable creations is the captivating Visual novel called Everglow.",
+        "logo": "https://avatars.cloudflare.steamstatic.com/df7ebc34c879df80186a3d27cf438bf3c10e4b3f_full.jpg",
+        "created_at": "2023-06-02T16:05:17Z",
+        "email": null,
+        "platforms": [
+            1
+        ]
+    }
+},
+{
+    "model": "backend.publisher",
+    "pk": 3,
+    "fields": {
+        "name": "Daedalic Entertainment",
+        "slug": "daedalic-entertainment",
+        "tagline": "Inventors, architects the legends",
+        "description": "Based in Hamburg, Germany, Daedalic is one of Europe’s most acclaimed publishers and developers. With a total of 32 awards in the German Developers Award (including multiple accolades for 'Studio of the Year') and 12 German Computer Game Awards for genre-defining games such as Deponia, Edna & Harvey, Silence, Shadow Tactics: Blades of the Shogun, Ken Follett's The Pillars of the Earth, The Long Journey Home, and State of Mind, Daedalic is a record holder for the two most prestigious game awards in Germany.​",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Daedalic_Entertainment_eng.svg/799px-Daedalic_Entertainment_eng.svg.png",
+        "created_at": "2023-06-02T16:05:17Z",
+        "email": null,
+        "platforms": [
+            1,
+            3
+        ]
+    }
+},
+{
+    "model": "backend.publisher",
+    "pk": 4,
+    "fields": {
+        "name": "Merge Games",
+        "slug": "merge-games",
+        "tagline": "Publishers. Developers. Gamers.",
+        "description": "Merge Games is a video game publisher headquartered in Cheshire, England, and a subsidiary of Maximum Entertainment. It is known for Alex Kidd in Miracle World DX, Children of Morta, Dead Cells, Spirit of the North, and more.",
+        "logo": "https://www.gematsu.com/wp-content/uploads/2021/10/Company-Logo_Merge-Games-320x122.png",
+        "created_at": "2023-06-02T16:05:17Z",
+        "email": null,
+        "platforms": [
+            1,
+            3
+        ]
+    }
+},
+{
+    "model": "backend.publisher",
+    "pk": 5,
+    "fields": {
+        "name": "HeroCraft",
+        "slug": "herocraft",
+        "tagline": "We make games. Will get yours made too.",
+        "description": "HeroCraft is a video game developer and publisher headquartered in Nikosia and with offices in Saint Petersburg, Kaliningrad and Novokuznetsk.\r\n\r\nHeroCraft develops for iOS, Android and Windows Phone devices as well as for Microsoft Windows and social networks and supports a variety of legacy platforms. Distribution takes place worldwide in 15 languages. HeroCraft has \"Top developer\" status on Google Play.",
+        "logo": "https://herocraft.com/static/img/logo.svg",
+        "created_at": "2023-06-02T16:05:17Z",
+        "email": null,
+        "platforms": [
+            1,
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "backend.pricingplan",
+    "pk": 1,
+    "fields": {
+        "name": "Indie",
+        "price": "0.00",
+        "enabled": true,
+        "max_pitches": 1,
+        "max_reviews": 1,
+        "max_lfp": 0,
+        "max_lft": 0,
+        "max_team": 1,
+        "premium_support": false
+    }
+},
+{
+    "model": "backend.pricingplan",
+    "pk": 2,
+    "fields": {
+        "name": "Team",
+        "price": "3.00",
+        "enabled": false,
+        "max_pitches": 3,
+        "max_reviews": 3,
+        "max_lfp": 1,
+        "max_lft": 1,
+        "max_team": 5,
+        "premium_support": false
+    }
+},
+{
+    "model": "backend.pricingplan",
+    "pk": 3,
+    "fields": {
+        "name": "Studio",
+        "price": "10.00",
+        "enabled": false,
+        "max_pitches": 999,
+        "max_reviews": 999,
+        "max_lfp": 999,
+        "max_lft": 999,
+        "max_team": 999,
+        "premium_support": true
+    }
+},
+{
+    "model": "backend.publisherservice",
+    "pk": 1,
+    "fields": {
+        "service": 4,
+        "publisher": 1,
+        "description": ""
+    }
+},
+{
+    "model": "backend.publisherservice",
+    "pk": 2,
+    "fields": {
+        "service": 5,
+        "publisher": 1,
+        "description": ""
+    }
+},
+{
+    "model": "backend.publisherservice",
+    "pk": 3,
+    "fields": {
+        "service": 1,
+        "publisher": 5,
+        "description": ""
+    }
+},
+{
+    "model": "backend.publisherservice",
+    "pk": 4,
+    "fields": {
+        "service": 3,
+        "publisher": 5,
+        "description": ""
+    }
+},
+{
+    "model": "backend.publisherservice",
+    "pk": 5,
+    "fields": {
+        "service": 2,
+        "publisher": 5,
+        "description": ""
+    }
+},
+{
+    "model": "backend.publisherservice",
+    "pk": 6,
+    "fields": {
+        "service": 1,
+        "publisher": 4,
+        "description": ""
+    }
+},
+{
+    "model": "backend.publisherservice",
+    "pk": 7,
+    "fields": {
+        "service": 3,
+        "publisher": 4,
+        "description": ""
+    }
+},
+{
+    "model": "backend.publisherservice",
+    "pk": 8,
+    "fields": {
+        "service": 6,
+        "publisher": 4,
+        "description": ""
+    }
+},
+{
+    "model": "backend.publisherservice",
+    "pk": 9,
+    "fields": {
+        "service": 2,
+        "publisher": 3,
+        "description": ""
+    }
+},
+{
+    "model": "backend.publisherservice",
+    "pk": 10,
+    "fields": {
+        "service": 4,
+        "publisher": 3,
+        "description": ""
+    }
+},
+{
+    "model": "backend.publisherservice",
+    "pk": 11,
+    "fields": {
+        "service": 1,
+        "publisher": 3,
+        "description": ""
+    }
+},
+{
+    "model": "backend.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$8FJIE9YFzPcd5gFTkivPag$TUPbt8aGgwOxng5BaqRKcyD0JxDxPAoPS+71SBo6IHY=",
+        "last_login": "2023-06-24T16:39:12.026Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2023-04-10T20:16:30Z",
+        "email": "admin@reach4pitch.com",
+        "pricing_plan": null,
+        "publisher": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "backend.user",
+    "pk": 2,
+    "fields": {
+        "password": "pbkdf2_sha256$390000$n6jEmvJz1bufDVNOF2emCe$nQU2FEkpIswjWQ2i5IMZjXj1UE3XCwIAkKoiHXpVOa0=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "publisher",
+        "first_name": "",
+        "last_name": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2023-03-26T13:31:18Z",
+        "email": "publisher@reach4pitch.com",
+        "pricing_plan": null,
+        "publisher": 1,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "backend.user",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$7xNKVithdn0WxtHOJM52gc$bvmSEhJUpnlKw+9wSPZdG5X/Un678VpjCajU8Ph4NOM=",
+        "last_login": "2023-06-10T19:48:55.187Z",
+        "is_superuser": false,
+        "username": "pitcher",
+        "first_name": "Pitcher",
+        "last_name": "Doe",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2023-03-26T13:31:18Z",
+        "email": "pitcher@reach4pitch.com",
+        "pricing_plan": 1,
+        "publisher": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "backend.user",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$9dYnw9UuLKRIJ25UIyramV$ymK/KsW9IkIIqmrFpx7ltFi+hpYhtHJPxrjWq0H3EgI=",
+        "last_login": "2023-04-11T18:34:13.725Z",
+        "is_superuser": false,
+        "username": "daedalic",
+        "first_name": "Daedalic",
+        "last_name": "Entertaiment",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2023-03-26T14:56:16Z",
+        "email": "daedalic@reach4pitch.com",
+        "pricing_plan": null,
+        "publisher": 3,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "backend.user",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$PKp2ttxkKPqAu1GhexzRvG$0FJwvbFNIZiOVbx3D2Wt7EL4wj9SIeKUKbDOnKgjzvY=",
+        "last_login": "2023-03-26T14:57:18Z",
+        "is_superuser": false,
+        "username": "herocraft",
+        "first_name": "Hero",
+        "last_name": "Craft",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2023-03-26T14:57:14Z",
+        "email": "herocraft@reach4pitch.com",
+        "pricing_plan": null,
+        "publisher": 5,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "backend.user",
+    "pk": 6,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$qVGVxcElibrCJLjf3SQ3xP$ub4azYl1Mal3ASqNpk89iCUoDGPqjqmQ1+ZyzAUk+aE=",
+        "last_login": "2023-03-26T14:57:40Z",
+        "is_superuser": false,
+        "username": "mergegames",
+        "first_name": "Merge",
+        "last_name": "Games",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2023-03-26T14:57:36Z",
+        "email": "mergegames@reach4pitch.com",
+        "pricing_plan": null,
+        "publisher": 4,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "backend.user",
+    "pk": 7,
+    "fields": {
+        "password": "pbkdf2_sha256$600000$Ug4saCbJ3uKmoi7MyV1ukb$HSkcYEJPWXUfEzt8/9NVRLnApUmGDN8yotf0lkXxyp4=",
+        "last_login": "2023-04-11T18:33:54Z",
+        "is_superuser": false,
+        "username": "john.doe@reach4pitch.com",
+        "first_name": "John",
+        "last_name": "Doe",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2023-04-11T17:24:15Z",
+        "email": "john.doe@reach4pitch.com",
+        "pricing_plan": 1,
+        "publisher": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "backend.resolutiontype",
+    "pk": 1,
+    "fields": {
+        "name": "Approved",
+        "publisher": 1
+    }
+},
+{
+    "model": "backend.resolutiontype",
+    "pk": 2,
+    "fields": {
+        "name": "Declined",
+        "publisher": 1
+    }
+},
+{
+    "model": "backend.resolutiontype",
+    "pk": 3,
+    "fields": {
+        "name": "Changes requested",
+        "publisher": 1
+    }
+},
+{
+    "model": "backend.resolution",
+    "pk": 1,
+    "fields": {
+        "created_at": "2023-03-26T13:31:18.314Z",
+        "created_by": 2,
+        "resolution_type": 1,
+        "description": ""
+    }
+},
+{
+    "model": "backend.review",
+    "pk": 1,
+    "fields": {
+        "pitch": 1,
+        "publisher": 1,
+        "resolution": 1
+    }
+},
+{
+    "model": "backend.review",
+    "pk": 3,
+    "fields": {
+        "pitch": 3,
+        "publisher": 3,
+        "resolution": null
+    }
+},
+{
+    "model": "backend.review",
+    "pk": 4,
+    "fields": {
+        "pitch": 6,
+        "publisher": 3,
+        "resolution": null
+    }
+},
+{
+    "model": "backend.review",
+    "pk": 6,
+    "fields": {
+        "pitch": 8,
+        "publisher": 4,
+        "resolution": null
+    }
+},
+{
+    "model": "backend.review",
+    "pk": 7,
+    "fields": {
+        "pitch": 9,
+        "publisher": 4,
+        "resolution": null
+    }
+},
+{
+    "model": "backend.review",
+    "pk": 9,
+    "fields": {
+        "pitch": 11,
+        "publisher": 5,
+        "resolution": null
+    }
+},
+{
+    "model": "backend.review",
+    "pk": 10,
+    "fields": {
+        "pitch": 12,
+        "publisher": 5,
+        "resolution": null
+    }
+},
+{
+    "model": "backend.review",
+    "pk": 12,
+    "fields": {
+        "pitch": 2,
+        "publisher": 1,
+        "resolution": null
+    }
+},
+{
+    "model": "backend.review",
+    "pk": 13,
+    "fields": {
+        "pitch": 5,
+        "publisher": 3,
+        "resolution": null
+    }
+},
+{
+    "model": "backend.notification",
+    "pk": 1,
+    "fields": {
+        "created_at": "2023-06-12T19:40:15Z",
+        "text": "LOOOOOOOOOOONG SEEN",
+        "created_for": 1,
+        "seen_at": "2023-06-12T19:40:25Z"
+    }
+},
+{
+    "model": "backend.notification",
+    "pk": 2,
+    "fields": {
+        "created_at": "2023-06-12T19:49:43Z",
+        "text": "LOOOOOOOOOOOOOOONG UNSEEN",
+        "created_for": 1,
+        "seen_at": null
+    }
+},
+{
+    "model": "flatpages.flatpage",
+    "pk": 1,
+    "fields": {
+        "url": "/policies/cookies/",
+        "title": "Cookies policy",
+        "content": "<section class=\"section\">\r\n  <div class=\"container\" style=\"margin-top: 60px; padding: 20px;\">\r\n    <div class=\"columns\">\r\n      <div class=\"column is-8-desktop\">\r\n        <h4 class=\"mb-2 is-size-5 has-text-weight-bold\">Cookies Policy</h4>\r\n        <p class=\"mb-4 has-text-grey-dark\">\r\n          We use cookies to personalize content, provide social media features, and analyze traffic to our website. We also share information about your use of our site with our social media, advertising, and analytics partners.\r\n        </p>\r\n        <p class=\"mb-4 has-text-grey-dark\">\r\n          By continuing to use our website, you agree to our use of cookies. These cookies help us tailor your browsing experience, show you relevant content, and understand how our website is being used.\r\n        </p>\r\n        <p class=\"mb-4 has-text-grey-dark\">\r\n          If you prefer not to have cookies stored on your device, you can adjust your cookie settings by clicking on 'Cookie Settings' or equivalent options in your browser. However, please note that disabling certain cookies may impact the functionality and performance of our website.\r\n        </p>\r\n        <p class=\"has-text-grey-dark\">\r\n          For more information about how we handle your personal data and protect your privacy,<br> please review our <a href=\"/pages/policies/terms-and-data/\">Term's and Data policy</a>.\r\n        </p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>",
+        "enable_comments": false,
+        "template_name": "",
+        "registration_required": false,
+        "sites": [
+            1
+        ]
+    }
+},
+{
+    "model": "flatpages.flatpage",
+    "pk": 2,
+    "fields": {
+        "url": "/policies/terms-and-data/",
+        "title": "Terms and data policy",
+        "content": "<section class=\"section\">\r\n  <div class=\"container\" style=\"margin-top: 60px; padding: 20px;\">\r\n    <div class=\"columns\">\r\n      <div class=\"column is-8-desktop\">\r\n        <h4 class=\"mb-2 is-size-5 has-text-weight-bold\">Terms and Data Policy</h4>\r\n        <p class=\"mb-4 has-text-grey-dark\">Before using our platform, please take the time to read and understand the following terms and data policy. By using our platform, you acknowledge that you have read, understood, and agreed to abide by these terms and data policy. If you do not agree with any of the mentioned terms, we kindly request that you refrain from using our services.</p>\r\n\r\n        <p><strong>1. Content Responsibility:</strong> We do not assume responsibility for the content of pitches submitted on our platform. However, if you encounter any abusive behavior or violations of our platform's policies, we encourage you to report them to us for investigation.</p>\r\n\r\n        <p><strong>2. File Responsibility:</strong> We do not take responsibility for the files accessed through external links provided on our platform. It is your responsibility to exercise caution and ensure the safety and security of your device when accessing such files.</p>\r\n\r\n        <p><strong>3. Response Time:</strong> We do not guarantee the speed of response from publishers on our platform. The response time may vary depending on various factors, and we cannot be held liable for any delays.</p>\r\n\r\n        <p><strong>4. Positive Response:</strong> We do not guarantee a positive response from publishers for your pitches. The decision to accept or reject a pitch rests solely with the publishers, and we cannot influence their decisions.</p>\r\n\r\n        <p><strong>5. External Communication:</strong> We do not assume responsibility for any communication or transactions that occur outside our platform. We encourage users to conduct all discussions and transactions related to pitches within our secure platform to ensure transparency and accountability.</p>\r\n\r\n        <p><strong>6. Accuracy of Data:</strong> We do not guarantee the accuracy or reliability of the information presented by publishers or developers on our platform. It is your responsibility to verify the accuracy of any data provided before making any decisions or commitments.</p>\r\n\r\n        <p><strong>7. Financial Impact:</strong> We do not assume responsibility for any financial loss or profit incurred by either party, including developers or publishers, as a result of using our platform or engaging in pitch-related activities. Any financial transactions or agreements made are solely the responsibility of the involved parties.</p>\r\n\r\n        <p><strong>8. Data Usage and Cookies:</strong> We may collect and process personal data as described in our Privacy Policy. By using our platform, you consent to the collection, processing, and storage of your personal data in accordance with our Privacy Policy. We may also use cookies to enhance your user experience and provide personalized features. You have the option to disable cookies in your browser settings, although this may affect certain functionalities of our platform.</p>\r\n\r\n        <p><strong>9. User Account and Data Removal:</strong> We reserve the right to delete user accounts and remove pitches from our platform upon request or in cases of policy violations or abusive behavior. Please contact us if you have any concerns or require assistance with user account or pitch removal.</p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>",
+        "enable_comments": false,
+        "template_name": "",
+        "registration_required": false,
+        "sites": [
+            1
+        ]
+    }
+},
+{
+    "model": "sites.site",
+    "pk": 1,
+    "fields": {
+        "domain": "127.0.0.1:8000",
+        "name": "reach4pitch.com"
+    }
+},
+{
+    "model": "flags.flagstate",
+    "pk": 1,
+    "fields": {
+        "name": "LFP_ENABLED",
+        "condition": "boolean",
+        "value": "False",
+        "required": false
+    }
+}
+]

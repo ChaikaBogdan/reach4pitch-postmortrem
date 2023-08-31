@@ -1,0 +1,7 @@
+{% autoescape off %}
+    Your pitch was reviewed:
+
+    {{ protocol }}://{{ domain }}{{ pitch.get_absolute_url }}
+
+    Sincerely, {{ site_name }}
+{% endautoescape %}

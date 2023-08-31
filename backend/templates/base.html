@@ -1,0 +1,160 @@
+{% load static %}
+{% load feature_flags %}
+{% flag_enabled 'LFP_ENABLED' as lfp_enabled %}
+{% flag_enabled 'SIGNUP_ENABLED' as signup_enabled %}
+
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+    <title>
+      {% block title %}Reach4Pitch{% endblock %}
+    </title>
+    <link rel="shortcut icon"
+          type="image/png"
+          href="{% static 'favicon.png' %}" />
+    {% block extra_head %}
+      <style>
+        @font-face {
+          font-family: 'Open Sans';
+          font-style: normal;
+          font-weight: 400;
+          src: local('Open Sans'), local('Arial'), local('Helvetica'), sans-serif;
+        }
+
+        body {
+          font-family: 'Open Sans', Arial, sans-serif;
+        }
+      </style>
+      <script defer src="{% static 'scripts/base.js' %}"></script>
+    {% endblock %}
+  </head>
+  <body>
+    <section class="section pt-0 pb-0 ">
+      <nav class="navbar pt-0 pb-0 is-fixed-top has-background-light" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            <img src="{% static 'logo.png' %}" alt="Logo">
+          </a>
+          <a class="navbar-burger"
+             role="button"
+             aria-label="menu"
+             aria-expanded="false"
+             data-target="navMenu">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+        <div class="navbar-menu" id="navMenu">
+          <div class="navbar-end">
+            <div class="navbar-item">
+              {% if user.is_authenticated and user.is_superuser %}
+                <a class="navbar-item no-hover" href="{% url 'admin:index' %}">Admin</a>
+              {% endif %}
+              <a class="navbar-item no-hover"
+                 href="{% url 'backend:pitches_list' %}">Pitches</a>
+              <a class="navbar-item no-hover"
+                 href="{% url 'backend:publishers_list' %}">Publishers</a>
+            </div>
+            <div class="navbar-item">
+              <div class="buttons">
+                {% if user.is_authenticated %}
+                  <div class="dropdown is-right is-hoverable" id="notification-dropdown">
+                    <div class="dropdown-trigger">
+                      <a class="button" style="background-color: transparent; border: none;" aria-haspopup="true" aria-controls="dropdown-menu">
+                        <span class="icon">
+                          <i class="fa fa-bell"></i>
+                        </span>
+                        <span class="notification-badge">{{ unread_count }}</span>
+                      </a>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                      <div class="dropdown-content" style="width: max-content;">
+                        {% for notification in notifications %}
+                          {% if notification.seen_at %}
+                            <div class="notification is-light is-info" style="margin-bottom: 0;">
+                              {{ notification.text|safe }}
+                            </div>
+                          {% else %}
+                            <div class="notification is-light is-danger" style="margin-bottom: 0;">
+                              <div style="display: flex; align-items: center;">
+                                <span style="margin-right: 0.5rem;">{{ notification.text|safe }}</span>
+                                <form method="post" class="hide" action="{% url 'backend:notification_hide' %}">
+                                  {% csrf_token %}
+                                  <input class="input" type="hidden" name="notification_id" value="{{ notification.pk }}" />
+                                  <button class="delete" type="submit"></button>
+                                </form>
+                              </div>
+                            </div>
+                          {% endif %}
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="dropdown is-hoverable">
+                    <div class="dropdown-trigger">
+                      <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                        <span>{{ user.get_username }}</span>
+                        <span class="icon is-small">
+                          <i class="fa fa-angle-down" aria-hidden="true"></i>
+                        </span>
+                      </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                      <div class="dropdown-content">
+                        <a href="{% url 'password_change' %}" class="dropdown-item">Change password</a>
+                        <hr class="dropdown-divider">
+                        <a href="{% url 'logout' %}" class="dropdown-item">Logout</a>
+                      </div>
+                    </div>
+                  </div>
+                {% else %}
+                  {% if not is_auth_page %}
+                    <a class="button" href="{% url 'login' %}">Sign In</a>
+                    {% if signup_enabled %}
+                      <a class="button is-primary" href="{% url 'signup' %}">Sign Up</a>
+                    {% endif %}
+                  {% endif %}
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </section>
+    {% block content %}
+      {% if messages %}
+        <div style="margin-top: 3.25rem;">
+          {% for message in messages %}
+            <div class="notification is-light {% if message.tags %}is-{{ message.tags }}{% endif %} ">
+              <button class="delete"></button>
+              {{ message }}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endblock %}
+  </body>
+  <footer class="footer pt-2 pb-2 has-background-light"
+          style="position: fixed;
+                 left: 0;
+                 bottom: 0;
+                 width: 100%">
+    <div class="content has-text-centered">
+      <p>
+        <a href="mailto:contact@reach4pitch.com">Reach us</a>
+        <span class="footer-divider">&nbsp;&bull;&nbsp;</span>
+        <a href="/pages/policies/terms-and-data/">Terms and Data Policy</a>
+        <span class="footer-divider">&nbsp;&bull;&nbsp;</span>
+        <a href="/pages/policies/cookies/">Cookies Policy</a>
+      </p>
+    </div>
+  </footer>
+</html>

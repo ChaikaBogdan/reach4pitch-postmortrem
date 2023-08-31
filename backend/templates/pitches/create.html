@@ -1,0 +1,75 @@
+{% extends '../base.html' %}
+
+{% block title %}{{ block.super }} - New Pitch{% endblock %}
+
+{% block extra_head %}
+  {{ block.super }}
+  {{ form.media }}
+{% endblock %}
+
+{% block content %}
+  {{ block.super }}
+  <section class="section">
+    <div class="container is-fullwidth" style="margin-top: 60px; padding: 20px;">
+      <div class="columns is-multiline is-centered">
+        <div class="column is-8">
+          <div class="box p-6 has-background-light">
+            <h3 class="mb-5 is-size-4 has-text-weight-bold has-text-centered">Create new pitch</h3>
+            <form action="{% url 'backend:pitch_create' %}" method="post">
+              {% csrf_token %}
+              <div class="field">
+                <label class="label" for="name">Title</label>
+                <div class="control">
+                  <input class="input" type="text" name="name" placeholder="Your pitch name" {% if form.name.value %}value="{{ form.name.value }}"{% endif %} />
+                  {{ form.name.errors }}
+                </div>
+              </div>
+              {{ external_links_formset.non_form_errors }}
+              {{ external_links_formset.management_form }}
+              {% for link_form in external_links_formset %}
+                {{ link_form.non_field_errors }}
+                <div class="field">
+                  <label class="label">{{ link_form.name.value }}</label>
+                  <div class="control">
+                    <input class="input" type="hidden" name="{{ link_form.name.html_name }}" id="{{ link_form.name.id_for_label }}" value="{{ link_form.name.value }}" />
+                    <input class="input" name="{{ link_form.url.html_name }}" id="{{ link_form.url.id_for_label }}" {% if link_form.url.value %}value="{{ link_form.url.value }}"{% endif %} />
+                    {{ link_form.url.errors }}
+                  </div>
+                </div>
+              {% endfor %}
+              <div class="field">
+                <label class="label" for="description">Elevator Pitch</label>
+                <div class="control">
+                  {{ form.description }}
+                </div>
+                {{ form.description.errors }}
+              </div>
+              <div class="field">
+                <label class="label" for="services">Required help</label>
+                <div class="control">
+                  {{ form.services }}
+                </div>
+                {{ form.services.errors }}
+              </div>
+              <div class="field">
+                <label class="label" for="platforms">Target platforms</label>
+                <div class="control">
+                  {{ form.platforms }}
+                </div>
+                {{ form.platforms.errors }}
+              </div>
+              {{ form.captcha }}
+              {{ form.captcha.errors }}
+              <div class="select">
+                {{ form.publisher }}
+                {{ form.publisher.errors }}
+              </div>
+              {{ form.non_field_errors }}
+              <button class="button is-primary" type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

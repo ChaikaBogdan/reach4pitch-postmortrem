@@ -1,0 +1,7 @@
+{% autoescape off %}
+    Please provide review for the new pitch by clicking link below:
+
+    {{ protocol }}://{{ domain }}{{ pitch.get_absolute_url }}
+
+    Sincerely, {{ site_name }}
+{% endautoescape %}

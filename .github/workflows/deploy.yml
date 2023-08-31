@@ -1,0 +1,38 @@
+name: Deploy Release Tag to VPS
+
+on:
+  release:
+    types:
+      - created
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Copy project files to VPS via SSH
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.VPS_GITHUB_KEY}}
+          port: 22
+          source: .
+          target: /home/reach4pitch/reach4pitch
+      
+      - name: Deploy new Release Tag via SSH
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.VPS_GITHUB_KEY}}
+          port: 22
+          script: |
+            cd /home/reach4pitch/reach4pitch
+            PIPENV_DOTENV_LOCATION=../.env poetry run python manage.py collectstatic --no-input
+            PIPENV_DOTENV_LOCATION=../.env poetry run python manage.py migrate --no-input
+            service gunicorn restart
+            service rq restart

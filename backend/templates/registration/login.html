@@ -1,0 +1,61 @@
+{% extends '../base.html' %}
+
+{% block content %}
+  {{ block.super }}
+  <section class="section">
+    <div class="container" style="margin-top: 60px; padding: 20px;">
+      <div class="columns is-multiline is-centered">
+        <div class="column is-8 is-5-desktop">
+          <div class="box p-6 has-background-light has-text-centered">
+            <span class="has-text-grey-dark">Sign In</span>
+            <h3 class="mb-5 is-size-4 has-text-weight-bold">
+              Welcome back!
+            </h3>
+            {% if form.errors %}
+              <div class="notification is-danger">
+                <button class="delete"></button>
+                Please correct the error below.
+              </div>
+            {% endif %}
+            {{ form.non_field_errors }}
+            <form method="post">
+              {% csrf_token %}
+              <div class="field">
+                {{ form.username.errors }}
+                <div class="control">
+                  <input
+                    class="input"
+                    type="email"
+                    name="username"
+                    placeholder="E-mail address"
+                    {% if form.username.value %}value="{{ form.username.value }}"{% endif %}
+                  />
+                </div>
+              </div>
+              <div class="field">
+                {{ form.password.errors }}
+                <div class="control">
+                  <input
+                    class="input"
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                  />
+                </div>
+              </div>
+              {% if next %}
+                <input type="hidden" name="next" value="{{next}}" />
+              {% endif %}
+              <button type="submit" class="button is-primary mb-4 is-fullwidth">
+                Get Started
+              </button>
+              <a class="mb-4 is-inline-block" href="{% url 'password_reset' %}"
+              ><small>Forgot password?</small></a
+                >
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock %}

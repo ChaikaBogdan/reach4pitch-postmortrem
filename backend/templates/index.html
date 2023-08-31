@@ -1,0 +1,311 @@
+{% extends './base.html' %}
+
+{% load static %}
+
+{% block title %}{{ block.super }} - Index{% endblock %}
+
+{% block content %}
+  {{ block.super }}
+  <section class="section pt-0 has-background-light">
+    <br>
+    <div class="container pt-5" style="margin-top: 60px; padding: 20px;">
+      <div class="columns is-multiline is-centered mb-6">
+        <div class="column is-8 is-6-desktop">
+          <div class="has-text-centered">
+            <span class="has-text-grey-dark">Looking for video game publisher?</span>
+            <h2 class="mt-3 mb-5 is-size-1 is-size-3-mobile has-text-weight-bold">
+              Level up your game ideas with effortless pitching!
+            </h2>
+            {% if not user.is_authenticated %}
+              <a class="button is-primary" href="{% url 'backend:pitch_create' %}">Create a new Pitch</a>
+            {% elif user.publisher_id %}
+              <a class="button is-primary" href="{% url 'backend:pitches_list' %}">Review submitted pitches</a>
+            {% else %}
+              <a class="button is-primary" href="{% url 'backend:pitch_create' %}">Create a new Pitch</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="columns is-multiline">
+        <div class="column is-4 mb-5 is-flex">
+          <div class="mr-4">
+            <svg viewbox="0 0 48 48"
+                 fill="none"
+                 xmlns="http://www.w3.org/2000/svg"
+                 style="width: 48px;
+                        height: 48px">
+              <path d="M25.6 22.9C25.7 23 25.8 23 26 23H33C33.6 23 34 22.6 34 22C34 21.8 34 21.7 33.9 21.6L30.4 14.6C30.1 14.1 29.5 13.9 29 14.2C28.9 14.3 28.7 14.4 28.6 14.6L25.1 21.6C24.9 22 25.1 22.6 25.6 22.9ZM29.5 17.2L31.4 21H27.6L29.5 17.2ZM18.5 14C16 14 14 16 14 18.5C14 21 16 23 18.5 23C21 23 23 21 23 18.5C23 16 21 14 18.5 14ZM18.5 21C17.1 21 16 19.9 16 18.5C16 17.1 17.1 16 18.5 16C19.9 16 21 17.1 21 18.5C21 19.9 19.9 21 18.5 21ZM22.7 25.3C22.3 24.9 21.7 24.9 21.3 25.3L18.5 28.1L15.7 25.3C15.3 24.9 14.7 24.9 14.3 25.3C13.9 25.7 13.9 26.3 14.3 26.7L17.1 29.5L14.3 32.3C13.9 32.7 13.9 33.3 14.3 33.7C14.7 34.1 15.3 34.1 15.7 33.7L18.5 30.9L21.3 33.7C21.7 34.1 22.3 34.1 22.7 33.7C23.1 33.3 23.1 32.7 22.7 32.3L19.9 29.5L22.7 26.7C23.1 26.3 23.1 25.7 22.7 25.3ZM33 25H26C25.4 25 25 25.4 25 26V33C25 33.6 25.4 34 26 34H33C33.6 34 34 33.6 34 33V26C34 25.4 33.6 25 33 25ZM32 32H27V27H32V32Z" fill="#00d1b2">
+              </path>
+              <circle cx="24" cy="24" r="23.5" stroke="#00d1b2"></circle>
+            </svg>
+          </div>
+          <div>
+            <h4 class="mb-2 is-size-5 has-text-weight-bold">Seamless Simplicity</h4>
+            <p>
+              Revolutionize your game pitch process and unleash your inner pro with our cutting-edge and irresistibly intuitive game pitch form.
+            </p>
+          </div>
+        </div>
+        <div class="column is-4 mb-5 is-flex">
+          <div class="mr-4">
+            <svg viewbox="0 0 48 48"
+                 fill="none"
+                 xmlns="http://www.w3.org/2000/svg"
+                 style="width: 48px;
+                        height: 48px">
+              <path d="M25.6 22.9C25.7 23 25.8 23 26 23H33C33.6 23 34 22.6 34 22C34 21.8 34 21.7 33.9 21.6L30.4 14.6C30.1 14.1 29.5 13.9 29 14.2C28.9 14.3 28.7 14.4 28.6 14.6L25.1 21.6C24.9 22 25.1 22.6 25.6 22.9ZM29.5 17.2L31.4 21H27.6L29.5 17.2ZM18.5 14C16 14 14 16 14 18.5C14 21 16 23 18.5 23C21 23 23 21 23 18.5C23 16 21 14 18.5 14ZM18.5 21C17.1 21 16 19.9 16 18.5C16 17.1 17.1 16 18.5 16C19.9 16 21 17.1 21 18.5C21 19.9 19.9 21 18.5 21ZM22.7 25.3C22.3 24.9 21.7 24.9 21.3 25.3L18.5 28.1L15.7 25.3C15.3 24.9 14.7 24.9 14.3 25.3C13.9 25.7 13.9 26.3 14.3 26.7L17.1 29.5L14.3 32.3C13.9 32.7 13.9 33.3 14.3 33.7C14.7 34.1 15.3 34.1 15.7 33.7L18.5 30.9L21.3 33.7C21.7 34.1 22.3 34.1 22.7 33.7C23.1 33.3 23.1 32.7 22.7 32.3L19.9 29.5L22.7 26.7C23.1 26.3 23.1 25.7 22.7 25.3ZM33 25H26C25.4 25 25 25.4 25 26V33C25 33.6 25.4 34 26 34H33C33.6 34 34 33.6 34 33V26C34 25.4 33.6 25 33 25ZM32 32H27V27H32V32Z" fill="#00d1b2">
+              </path>
+              <circle cx="24" cy="24" r="23.5" stroke="#00d1b2"></circle>
+            </svg>
+          </div>
+          <div>
+            <h4 class="mb-2 is-size-5 has-text-weight-bold">Transparent Collaboration</h4>
+            <p>
+              Elevate your game development to unprecedented heights by receiving lightning-fast and transparent feedback on your game ideas from industry-leading publishers. Take a leap forward in your journey and unlock unparalleled opportunities.
+            </p>
+          </div>
+        </div>
+        <div class="column is-4 is-flex">
+          <div class="mr-4">
+            <svg viewbox="0 0 48 48"
+                 fill="none"
+                 xmlns="http://www.w3.org/2000/svg"
+                 style="width: 48px;
+                        height: 48px">
+              <path d="M25.6 22.9C25.7 23 25.8 23 26 23H33C33.6 23 34 22.6 34 22C34 21.8 34 21.7 33.9 21.6L30.4 14.6C30.1 14.1 29.5 13.9 29 14.2C28.9 14.3 28.7 14.4 28.6 14.6L25.1 21.6C24.9 22 25.1 22.6 25.6 22.9ZM29.5 17.2L31.4 21H27.6L29.5 17.2ZM18.5 14C16 14 14 16 14 18.5C14 21 16 23 18.5 23C21 23 23 21 23 18.5C23 16 21 14 18.5 14ZM18.5 21C17.1 21 16 19.9 16 18.5C16 17.1 17.1 16 18.5 16C19.9 16 21 17.1 21 18.5C21 19.9 19.9 21 18.5 21ZM22.7 25.3C22.3 24.9 21.7 24.9 21.3 25.3L18.5 28.1L15.7 25.3C15.3 24.9 14.7 24.9 14.3 25.3C13.9 25.7 13.9 26.3 14.3 26.7L17.1 29.5L14.3 32.3C13.9 32.7 13.9 33.3 14.3 33.7C14.7 34.1 15.3 34.1 15.7 33.7L18.5 30.9L21.3 33.7C21.7 34.1 22.3 34.1 22.7 33.7C23.1 33.3 23.1 32.7 22.7 32.3L19.9 29.5L22.7 26.7C23.1 26.3 23.1 25.7 22.7 25.3ZM33 25H26C25.4 25 25 25.4 25 26V33C25 33.6 25.4 34 26 34H33C33.6 34 34 33.6 34 33V26C34 25.4 33.6 25 33 25ZM32 32H27V27H32V32Z" fill="#00d1b2">
+              </path>
+              <circle cx="24" cy="24" r="23.5" stroke="#00d1b2"></circle>
+            </svg>
+          </div>
+          <div>
+            <h4 class="mb-2 is-size-5 has-text-weight-bold">Unleashing Discoverability</h4>
+            <p>
+              Our platform provides features and tools to effectively showcase projects, highlight unique aspects of games, and attract potential publishers and teammates.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-10 is-8-desktop mb-5 has-text-centered">
+          <span class="has-text-grey-dark">Pricing</span>
+          <h2 class="mt-2 mb-4 is-size-1 is-size-3-mobile has-text-weight-bold">Give it a try. It's free.</h2>
+          <p class="subtitle has-text-grey mb-5">As the things should be.</p>
+        </div>
+      </div>
+      <div class="is-vcentered columns is-multiline">
+        <div class="column is-6 is-4-desktop mb-5">
+          <div class="box has-background-light has-text-centered">
+            <h4 class="has-text-grey-dark">Indie</h4>
+            <span class="mb-5 is-inline-block is-size-1 is-size-3-mobile has-text-weight-bold">Free</span>
+            <ul class="mb-5">
+              <li class="mb-3 is-flex is-align-items-center">
+                <svg class="has-text-grey mr-2"
+                     xmlns="http://www.w3.org/2000/svg"
+                     fill="none"
+                     viewbox="0 0 24 24"
+                     stroke="currentColor"
+                     style="width: 24px;
+                            height: 24px">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z">
+                  </path>
+                </svg>
+                <p class="mb-0">1 active direct pitch (to any single publisher)</p>
+              </li>
+              <li class="mb-3 is-flex is-align-items-center">
+                <svg class="mr-2"
+                     xmlns="http://www.w3.org/2000/svg"
+                     width="24"
+                     height="24"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="#7a7a7a"
+                     stroke-width="2"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line>
+                </svg>
+                <p class="mb-0">No team members</p>
+              </li>
+              <li class="mb-3 is-flex is-align-items-center">
+                <svg class="mr-2"
+                     xmlns="http://www.w3.org/2000/svg"
+                     width="24"
+                     height="24"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="#7a7a7a"
+                     stroke-width="2"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line>
+                </svg>
+                <p class="mb-0">No public pitches (Looking For Publisher)</p>
+              </li>
+              <li class="mb-3 is-flex is-align-items-center">
+                <svg class="mr-2"
+                     xmlns="http://www.w3.org/2000/svg"
+                     width="24"
+                     height="24"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="#7a7a7a"
+                     stroke-width="2"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line>
+                </svg>
+                <p class="mb-0">No recruitment campaigns (Looking For Team)</p>
+              </li>
+            </ul>
+            {% if not user.is_authenticated %}
+              <a class="button is-primary is-fullwidth" href="{% url 'backend:pitch_create' %}">Get started</a>
+            {% elif user.publisher_id %}
+              <a class="button is-primary is-fullwidth" href="{% url 'backend:pitches_list' %}">Get started</a>
+            {% else %}
+              <a class="button is-primary is-fullwidth" href="{% url 'backend:pitch_create' %}">Get started</a>
+            {% endif %}
+          </div>
+        </div>
+        <div class="column is-6 is-4-desktop mb-5">
+          <div class="box has-background-primary has-text-centered">
+            <h4 class="has-text-white">Studio</h4>
+            <span class="has-text-white mb-5 is-inline-block is-size-1 is-size-3-mobile has-text-weight-bold">$10/month</span>
+            <ul class="mb-5">
+              <li class="mb-3 is-flex is-align-items-center">
+                <svg class="has-text-light mr-2"
+                     xmlns="http://www.w3.org/2000/svg"
+                     fill="none"
+                     viewbox="0 0 24 24"
+                     stroke="currentColor"
+                     style="width: 24px;
+                            height: 24px">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z">
+                  </path>
+                </svg>
+                <p class="has-text-white mb-0">Unlimited pitches of all types</p>
+              </li>
+              <li class="mb-3 is-flex is-align-items-center">
+                <svg class="has-text-light mr-2"
+                     xmlns="http://www.w3.org/2000/svg"
+                     fill="none"
+                     viewbox="0 0 24 24"
+                     stroke="currentColor"
+                     style="width: 24px;
+                            height: 24px">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z">
+                  </path>
+                </svg>
+                <p class="has-text-white mb-0">Unlimited team size (charged per user)</p>
+              </li>
+              <li class="mb-3 is-flex is-align-items-center">
+                <svg class="has-text-light mr-2"
+                     xmlns="http://www.w3.org/2000/svg"
+                     fill="none"
+                     viewbox="0 0 24 24"
+                     stroke="currentColor"
+                     style="width: 24px;
+                            height: 24px">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z">
+                  </path>
+                </svg>
+                <p class="has-text-white mb-0">Unlimited recruitment campaigns</p>
+              </li>
+              <li class="mb-3 is-flex is-align-items-center">
+                <svg class="has-text-light mr-2"
+                     xmlns="http://www.w3.org/2000/svg"
+                     fill="none"
+                     viewbox="0 0 24 24"
+                     stroke="currentColor"
+                     style="width: 24px;
+                            height: 24px">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z">
+                  </path>
+                </svg>
+                <p class="has-text-white mb-0">Premium support</p>
+              </li>
+            </ul>
+            <a class="button is-disabled is-light is-fullwidth has-text-centered"
+               disabled>Coming soon</a>
+          </div>
+        </div>
+        <div class="column is-12 is-4-desktop mb-5">
+          <div class="box has-background-light has-text-centered">
+            <h4 class="has-text-grey-dark">Team</h4>
+            <span class="mb-5 is-inline-block is-size-1 is-size-3-mobile has-text-weight-bold">$3/month</span>
+            <ul class="mb-5">
+              <li class="mb-3 is-flex is-align-items-center">
+                <svg class="has-text-grey mr-2"
+                     xmlns="http://www.w3.org/2000/svg"
+                     fill="none"
+                     viewbox="0 0 24 24"
+                     stroke="currentColor"
+                     style="width: 24px;
+                            height: 24px">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z">
+                  </path>
+                </svg>
+                <p class="mb-0">3 active direct pitches (same or different publisher)</p>
+              </li>
+              <li class="mb-3 is-flex is-align-items-center">
+                <svg class="has-text-grey mr-2"
+                     xmlns="http://www.w3.org/2000/svg"
+                     fill="none"
+                     viewbox="0 0 24 24"
+                     stroke="currentColor"
+                     style="width: 24px;
+                            height: 24px">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z">
+                  </path>
+                </svg>
+                <p class="mb-0">Up to 5 team members (charged per user)</p>
+              </li>
+              <li class="mb-3 is-flex is-align-items-center">
+                <svg class="has-text-grey mr-2"
+                     xmlns="http://www.w3.org/2000/svg"
+                     fill="none"
+                     viewbox="0 0 24 24"
+                     stroke="currentColor"
+                     style="width: 24px;
+                            height: 24px">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z">
+                  </path>
+                </svg>
+                <p class="mb-0">1 public pitch (Looking for Publisher)</p>
+              </li>
+              <li class="mb-3 is-flex is-align-items-center">
+                <svg class="has-text-grey mr-2"
+                     xmlns="http://www.w3.org/2000/svg"
+                     fill="none"
+                     viewbox="0 0 24 24"
+                     stroke="currentColor"
+                     style="width: 24px;
+                            height: 24px">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z">
+                  </path>
+                </svg>
+                <p class="mb-0">1 recruitment campaign (Looking for Team)</p>
+              </li>
+            </ul>
+            <a class="button is-disabled is-primary is-fullwidth has-text-centered"
+               disabled>Coming soon</a>
+          </div>
+        </div>
+      </div>
+      {% if not user.is_authenticated %}
+        <form method="post" action="{% url 'collect_email' %}">
+          {% csrf_token %}
+          <div class="field">
+            <div class="control">
+              <input class="input" type="email" name="email" placeholder="E-mail address" />
+            </div>
+          </div>
+          <button type="submit" class="button is-primary is-fullwidth">Count me in!</button>
+        </form>
+      {% endif %}
+    </div>
+  </section>
+{% endblock %}

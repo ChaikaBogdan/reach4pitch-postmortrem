@@ -1,0 +1,80 @@
+{% extends '../base.html' %}
+
+{% block title %}{{ block.super }} - Update Pitch - {{ pitch.name }}{% endblock %}
+
+{% block extra_head %}
+  {{ block.super }}
+  {{ form.media }}
+{% endblock %}
+
+{% block content %}
+  {{ block.super }}
+  <section class="section">
+    <div class="container is-fullwidth" style="margin-top: 60px; padding: 20px;">
+      <div class="columns is-multiline is-centered">
+        <div class="column is-8">
+          <div class="box p-6 has-background-light">
+            <h3 class="mb-5 is-size-4 has-text-weight-bold has-text-centered">Update "{{pitch.name}}"</h3>
+            <form action="{% url 'backend:pitch_update' pitch.slug %}" method="post">
+              {% csrf_token %}
+              <div class="field">
+                <label class="label" for="name">Title</label>
+                <div class="control">
+                  <input class="input" type="text" name="name" placeholder="Your pitch name" {% if form.name.value %}value="{{ form.name.value }}"{% endif %} />
+                  {{ form.name.errors }}
+                </div>
+              </div>
+              <label class="label is-size-5-desktop">External links</label>
+              {{ external_links_formset.non_form_errors }}
+              {{ external_links_formset.management_form }}
+              {% for link_form in external_links_formset %}
+                {% if not link_form.id.value %}
+                  <label class="label is-size-6-desktop">Add new link</label>
+                {% endif %}
+                {{ link_form.non_field_errors }}
+                <div class="field">
+                  <input class="input" type="hidden" name="{{ link_form.id.html_name }}" id="{{ link_form.id.id_for_label }}" {% if link_form.id.value %}value="{{ link_form.id.value }}"{% endif %} />
+                  <label class="label" for="{{ link_form.name.id_for_label }}">Link name</label>
+                  <div class="control">
+                    <input class="input" name="{{ link_form.name.html_name }}" id="{{ link_form.name.id_for_label }}" {% if link_form.name.value %}value="{{ link_form.name.value }}"{% endif %} />
+                  </div>
+                  {{ link_form.name.errors }}
+                </div>
+                <div class="field">
+                  <label class="label" for="{{ link_form.url.id_for_label }}">Link URL</label>
+                  <div class="control">
+                    <input class="input" name="{{ link_form.url.html_name }}" id="{{ link_form.url.id_for_label }}" {% if link_form.url.value %}value="{{ link_form.url.value }}"{% endif %} />
+                  </div>
+                  {{ link_form.url.errors }}
+                </div>
+              {% endfor %}
+              <div class="field">
+                <label class="label" for="description">Elevator Pitch</label>
+                <div class="control">
+                  {{ form.description }}
+                </div>
+                {{ form.description.errors }}
+              </div>
+              <div class="field">
+                <label class="label" for="services">Required help</label>
+                <div class="control">
+                  {{ form.services }}
+                </div>
+                {{ form.services.errors }}
+              </div>
+              <div class="field">
+                <label class="label" for="platforms">Target platforms</label>
+                <div class="control">
+                  {{ form.platforms }}
+                </div>
+                {{ form.platforms.errors }}
+              </div>
+              {{ form.non_field_errors }}
+              <button class="button is-primary" type="submit">Update</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

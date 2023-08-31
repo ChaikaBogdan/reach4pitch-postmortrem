@@ -1,0 +1,7 @@
+{% autoescape off %}
+    Your pitch was unpublished due to abuse report:
+
+    {{ protocol }}://{{ domain }}{{ pitch.get_absolute_url }}
+
+    Sincerely, {{ site_name }}
+{% endautoescape %}

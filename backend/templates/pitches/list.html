@@ -1,0 +1,140 @@
+{% extends '../base.html' %}
+{% block title %}{{ block.super }} - Pitches{% endblock %}
+{% block content %}
+  {{ block.super }}
+  {% if paginator.count %}
+    <section class="section">
+      <div class="container" style="margin-top: 60px; padding: 20px;">
+        <div class="columns is-multiline is-centered">
+          <div class="column is-8 is-12-desktop">
+            <div class="box p-12 has-background-light">
+              <div class="field is-grouped">
+                <h3 class="control mb-5 is-size-4 has-text-weight-bold">Pitches list</h3>
+                {% if not user.publisher_id %}
+                  <p class="control">
+                    <a class="button is-success is-small" href="{% url 'backend:pitch_create' %}">
+                      <span class="icon">
+                        <i class="fa fa-plus"></i>
+                      </span>
+                    </a>
+                  </p>
+                {% endif %}
+              </div>
+              <div class="table-container">
+                <table class="table is-fullwidth">
+                  <thead>
+                    <tr>
+                      <th>
+                        <abbr title="Order by name">
+                          <a href="{{ filters.name }}">Pitch</a>
+                        </abbr>
+                      </th>
+                      {% if lfp_enabled %}
+                        <th>
+                          <abbr title="Order by number of likes">
+                            <a href="{{ filters.likes_count }}">Likes</a>
+                          </abbr>
+                        </th>
+                      {% endif %}
+                      {% if not user.publisher_id %}
+                        <th>Publisher</th>
+                      {% endif %}
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for item in page_obj.object_list %}
+                      <tr>
+                        <td>
+                          <div class="card" style="border: none; box-shadow: none;">
+                            <div class="card-content">
+                              <div class="media">
+                                {% if item.cover %}
+                                  <div class="media-left">
+                                    <figure class="image is-48x48">
+                                      <img src="{{ item.cover }}" alt="{{ item.name }} cover" />
+                                    </figure>
+                                  </div>
+                                {% endif %}
+                                <div class="media-content">
+                                  <p class="title is-4">
+                                    <a href="{{ item.get_absolute_url }}">{{ item.name }}</a>
+                                  </p>
+                                  {% if item.tagline %}<p class="subtitle is-6">{{ item.tagline }}</p>{% endif %}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                        {% if lfp_enabled %}<td>{{ item.likes_count }}</td>{% endif %}
+                        {% if not user.publisher_id %}
+                          <td>
+                            {% for review in item.reviews.all %}
+                              <br>
+                              <a href="{{ review.publisher.get_absolute_url }}">{{ review.publisher.name }}</a>
+                            {% endfor %}
+                          </td>
+                        {% endif %}
+                        <td>
+                          {% for review in item.reviews.all %}
+                            <br>
+                            {% if review.resolution_id %}
+                              <p class="has-text-primary">{{ review.resolution.resolution_type.name }}</p>
+                            {% else %}
+                              {% if review.pitch.is_published %}
+                                <p class="has-text-info">Waiting for review</p>
+                              {% else %}
+                                {% if review.pitch.is_abused %}
+                                  <p class="has-text-danger">Abuse reported</p>
+                                {% else %}
+                                  <p class="has-text-dark">Draft</p>
+                                {% endif %}
+                              {% endif %}
+                            {% endif %}
+                          {% empty %}
+                            <br>
+                            <p class="has-text-info">Waiting for review</p>
+                          {% endfor %}
+                        </td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              <br />
+              {% if paginator.num_pages > 1 %}
+                {% if page_obj.has_previous %}
+                  <a href="?page=1">&laquo; first</a>
+                  <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+                Page {{ page_obj.number }} of {{ paginator.num_pages }}.
+                {% if page_obj.has_next %}
+                  <a href="?page={{ page_obj.next_page_number }}">next</a>
+                  <a href="?page={{ paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  {% else %}
+    <section class="section">
+      <div class="container" style="margin-top: 60px; padding: 20px;">
+        <div class="columns is-multiline is-centered">
+          <div class="column is-8 is-5-desktop">
+            <div class="box p-6 has-background-light has-text-centered">
+              <h2 class="mt-2 mb-3 is-size-1 is-size-3-mobile has-text-weight-bold">No pitches?</h2>
+              <p class="subtitle has-text-grey mb-5">Sorry! We are unable to find any pitches {% if user.publisher_id %}for you to review{% else %}of yours{%endif%}.</p>
+              {% if not user.publisher_id %}
+                <div class="buttons is-centered">
+                  <a class="button is-primary" href="{% url 'backend:pitch_create' %}">Create a new pitch</a>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  {% endif %}
+{% endblock %}

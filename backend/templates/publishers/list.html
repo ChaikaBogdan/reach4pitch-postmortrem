@@ -1,0 +1,124 @@
+{% extends '../base.html' %}
+{% block title %}{{ block.super }} - Publishers{% endblock %}
+{% block content %}
+  {{ block.super }}
+  {% if paginator.count %}
+    <section class="section">
+      <div class="container" style="margin-top: 60px; padding: 20px;">
+        <div class="columns is-multiline is-centered">
+          <div class="column is-8 is-12-desktop">
+            <div class="box p-4 has-background-light">
+              <h3 class="mb-5 is-size-4 has-text-weight-bold">Publishers list</h3>
+              <div class="table-container">
+                <table class="table is-fullwidth">
+                  <colgroup>
+                    <col style="width: auto;">
+                    <col style="width: auto;">
+                    <col style="width: auto;">
+                    <col style="width: auto;">
+                  </colgroup>
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Platforms</th>
+                      <th>Services</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for item in page_obj.object_list %}
+                      <tr>
+                        <td>
+                          <div class="card" style="border: none; box-shadow: none;">
+                            <div class="card-content">
+                              <div class="media">
+                                {% if item.logo %}
+                                  <div class="media-left">
+                                    <figure class="image is-64x64">
+                                      <img src="{{ item.logo }}" alt="{{ item.name }} logo" />
+                                    </figure>
+                                  </div>
+                                {% endif %}
+                                <div class="media-content">
+                                  <p class="title is-4">
+                                    <a href="{{ item.get_absolute_url }}">{{ item.name }}</a>
+                                  </p>
+                                  {% if item.tagline %}
+                                    <p class="subtitle is-6">{{ item.tagline }}</p>
+                                  {% endif %}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="card" style="border: none; box-shadow: none;">
+                            <div class="card-content">
+                              <ul>
+                                {% for platform in item.platforms.all %}
+                                  <li>
+                                    <img src="{{ platform.icon }}" alt="{{ platform.name }} icon" style="max-width: 32px; max-height: 32px; margin-bottom: 8px;">
+                                  </li>
+                                {% endfor %}
+                              </ul>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="card" style="border: none; box-shadow: none;">
+                            <div class="card-content">
+                              <ul>
+                                {% for service in item.services.all %}
+                                  <li style="font-size: smaller;">&bull; {{ service }}</li>
+                                {% endfor %}
+                              </ul>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div class="card" style="border: none; box-shadow: none;">
+                            <div class="card-content">
+                              <div class="buttons is-centered">
+                                <button class="button is-info" onclick="window.open('{{item.links.first.url}}', '_blank')">
+                                  <span class="icon">
+                                    <i class="fa fa-globe"></i>
+                                  </span>
+                                </button>
+                                {% if not user.publisher_id %}
+                                  <a class="button is-primary" href="{% url 'backend:pitch_publisher_create' item.slug %}">
+                                    <span class="icon">
+                                      <i class="fa fa-pencil-square-o"></i>
+                                    </span>
+                                  </a>
+                                {% endif %}
+                              </div>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              <br />
+              {% if paginator.num_pages > 1 %}
+                {% if page_obj.has_previous %}
+                  <a href="?page=1">&laquo; first</a>
+                  <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+                Page {{ page_obj.number }} of {{ paginator.num_pages }}.
+                {% if page_obj.has_next %}
+                  <a href="?page={{ page_obj.next_page_number }}">next</a>
+                  <a href="?page={{ paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  {% else %}
+    <p style="margin-top: 3.25rem;">No publishers?</p>
+  {% endif %}
+{% endblock %}

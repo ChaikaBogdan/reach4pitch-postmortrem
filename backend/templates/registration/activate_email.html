@@ -1,0 +1,7 @@
+{% autoescape off %}
+    To confirm your registration for {{ user.get_username }}, click the link below:
+
+    {{ protocol }}://{{ domain }}{% url 'activate_email' uidb64=uid token=token %}{% if next %}?{{next_key}}={{next}}{% endif %}
+
+    Sincerely, {{ site_name }}
+{% endautoescape %}
