@@ -2,6 +2,10 @@
 [![Deploy Release Tag to VPS](https://github.com/ChaikaBogdan/reach4pitch/actions/workflows/deploy.yml/badge.svg)](https://github.com/ChaikaBogdan/reach4pitch/actions/workflows/deploy.yml)
 # Reach4Pitch
 
+
+https://github.com/ChaikaBogdan/reach4pitch-postmortrem/assets/16524061/639b77e1-a6e9-413f-9c1c-bf456a630721
+
+
 ## Setup
 
 - Install [poetry](https://python-poetry.org/)
