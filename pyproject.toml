@@ -19,7 +19,7 @@ django-tinymce = "^3.6.1"
 
 
 [tool.poetry.group.dev.dependencies]
-ruff = "^0.0.275"
+ruff = "^0.0.286"
 pre-commit = "^3.3.3"
 black = "^23.3.0"
 djlint = "^1.31.1"
